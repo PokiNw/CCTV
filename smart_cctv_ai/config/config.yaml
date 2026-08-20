@@ -1,0 +1,75 @@
+application:
+  name: "SMART CCTV AI"
+  version: "1.0.0-phase1"
+  log_level: "INFO"
+  ui_theme: "dark_industrial"
+  window_title: "SMART CCTV AI - Windows Surveillance & Analytics Dashboard"
+  default_grid_layout: "2x2" # 1x1, 2x2, 3x3
+
+camera_defaults:
+  reconnect_interval_sec: 5
+  max_reconnect_attempts: 10
+  connection_timeout_sec: 8
+  buffer_size: 2
+  default_fps: 25
+  preferred_transport: "tcp" # tcp, udp
+
+cameras:
+  - id: "cam_entrance"
+    name: "Main Entrance"
+    rtsp_url: "rtsp://192.168.1.101:554/stream1"
+    transport: "tcp"
+    resolution: "1920x1080"
+    target_fps: 25
+    enabled: true
+    is_test_source: true
+    zone: "Entrance"
+
+  - id: "cam_lobby"
+    name: "Central Lobby"
+    rtsp_url: "rtsp://192.168.1.102:554/stream1"
+    transport: "tcp"
+    resolution: "1920x1080"
+    target_fps: 25
+    enabled: true
+    is_test_source: true
+    zone: "Lobby"
+
+  - id: "cam_parking"
+    name: "North Parking"
+    rtsp_url: "rtsp://192.168.1.103:554/stream1"
+    transport: "tcp"
+    resolution: "1280x720"
+    target_fps: 20
+    enabled: true
+    is_test_source: true
+    zone: "Parking"
+
+  - id: "cam_storage"
+    name: "Secure Storage Room"
+    rtsp_url: "rtsp://192.168.1.104:554/stream1"
+    transport: "tcp"
+    resolution: "1280x720"
+    target_fps: 15
+    enabled: false
+    is_test_source: false
+    zone: "Restricted Storage"
+
+analytics:
+  detection_fps: 10
+  confidence_threshold: 0.50
+  model_name: "yolov8n.pt"
+
+privacy:
+  privacy_mode: true
+  face_blur: true
+  biometric_matching: false
+  anonymous_tracking_only: true
+
+retention:
+  events_days: 30
+  video_days: 0
+
+alerts:
+  occupancy_warning_percent: 80
+  occupancy_critical_percent: 100

@@ -1,0 +1,10 @@
+{
+  "name": "Remix Smart CCTV AI",
+  "description": "Professional CCTV video analytics, camera manager, and live stream monitoring with anonymous tracking and privacy controls.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
